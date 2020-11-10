@@ -4,8 +4,8 @@ const ci = require('miniprogram-ci');
   const project = new ci.Project({
     appid: process.env.APP_ID,
     type: 'miniProgram',
-    projectPath: process.env.PWD,
-    privateKeyPath: `./private.${process.env.APP_ID}.key`,
+    projectPath: path.join(__dirname, '..'),
+    privateKeyPath: path.join(__dirname, `./private.${process.env.APP_ID}.key`),
     ignores: ['node_modules/**/*'],
   });
   const uploadResult = await ci.upload({
