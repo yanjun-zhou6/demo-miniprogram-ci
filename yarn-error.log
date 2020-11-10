@@ -1,0 +1,34 @@
+Arguments: 
+  /Users/numbersics/.nvm/versions/node/v12.13.0/bin/node /usr/local/Cellar/yarn/1.10.1/libexec/bin/yarn.js add --dev miniprogram-ci
+
+PATH: 
+  /Users/numbersics/.nvm/versions/node/v12.13.0/bin:/usr/local/Cellar/python@2/2.7.16/libexec:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/python@2/2.7.16/libexec
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  12.13.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npm.taobao.org/jimp/download/jimp-0.9.8.tgz: unexpected end of file
+      at Zlib.zlibOnError [as onerror] (zlib.js:170:17)
+
+npm manifest: 
+  {
+    "name": "Emojiary",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:unnKoel/mini-ci-demo.git",
+    "author": "unnkoel <unnkoel@gmail.com>",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
