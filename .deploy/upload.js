@@ -1,4 +1,5 @@
 const ci = require('miniprogram-ci');
+const path = require('path');
 
 (async () => {
   const project = new ci.Project({
