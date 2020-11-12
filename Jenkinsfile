@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'node:15.2.0-alpine3.10'
+      args  '--dns 10.72.0.3 --dns 10.22.16.254'
     }
   }
 
@@ -14,8 +15,10 @@ pipeline {
           doGenerateSubmoduleConfigurations: false,
           extensions: [],
           submoduleCfg: [],
-          userRemoteConfigs: [[credentialsId: 'jenkins-addy-for-github-repository',
-          url: 'git@github.com:unnKoel/mini-ci-demo.git']]
+          userRemoteConfigs: [[
+            credentialsId: 'jenkins-addy-for-github-repository',
+            url: 'git@github.com:unnKoel/mini-ci-demo.git'
+            ]]
           ]
         )
         sh 'yarn install'
@@ -36,7 +39,10 @@ pipeline {
 
     stage('preview') {
       steps {
-        sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` node .deploy/preview.js'
+        script {
+          sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` node .deploy/preview.js'
+          currentBuild.description = "<img src='${JOB_URL}ws/preview-dev.png' height='200' width='200' />"
+        }
       }
     }
   }
