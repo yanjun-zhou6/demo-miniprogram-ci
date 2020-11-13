@@ -52,6 +52,7 @@ pipeline {
         }
       }
       steps {
+        echo VERSION
         sh 'APP_ID=wx26472e7a2fdabe94 VERSION=$VERSION DESCRIPTION=$DESCRIPTION node .deploy/upload.js'
       }
     }
