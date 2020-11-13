@@ -52,7 +52,7 @@ pipeline {
         }
       }
       steps {
-        sh 'APP_ID=wx26472e7a2fdabe94 VERSION=${params.VERSION} DESCRIPTION=${params.DESCRIPTION} node .deploy/upload.js'
+        sh 'APP_ID=wx26472e7a2fdabe94 VERSION=$VERSION DESCRIPTION=$DESCRIPTION node .deploy/upload.js'
       }
     }
   }
