@@ -7,20 +7,8 @@ pipeline {
   }
 
   stages {
-    stage('checkout source code') {
+    stage('prepare environment') {
       steps {
-        checkout([
-          $class: 'GitSCM',
-          branches: [[name: '*/dev']],
-          doGenerateSubmoduleConfigurations: false,
-          extensions: [],
-          submoduleCfg: [],
-          userRemoteConfigs: [[
-            credentialsId: 'jenkins-addy-for-github-repository',
-            url: 'git@github.com:unnKoel/mini-ci-demo.git'
-          ]]
-        ]
-        )
         sh 'yarn install'
       }
     }
