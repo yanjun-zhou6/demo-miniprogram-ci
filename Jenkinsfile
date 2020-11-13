@@ -18,8 +18,8 @@ pipeline {
           userRemoteConfigs: [[
             credentialsId: 'jenkins-addy-for-github-repository',
             url: 'git@github.com:unnKoel/mini-ci-demo.git'
-            ]]
-          ]
+          ]]
+        ]
         )
         sh 'yarn install'
       }
@@ -38,11 +38,33 @@ pipeline {
     }
 
     stage('preview') {
+      when {
+        branch 'dev'
+      }
+
       steps {
         script {
           sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` node .deploy/preview.js'
           currentBuild.description = "<img src='${JOB_URL}ws/preview-dev.png' height='200' width='200' />"
         }
+      }
+    }
+
+    stage('deploy') {
+      when {
+        branch 'master'
+        beforeInput true
+      }
+      input {
+        message 'Please input version and description of this deploy'
+        ok 'done'
+        parameters {
+          string(name: 'VERSION', defaultValue: '', description: 'what\'s the version?')
+          string(name: 'DESCRIPTION', defaultValue: '', description: 'what\'s the description?')
+        }
+      }
+      steps {
+        sh 'APP_ID=wx26472e7a2fdabe94 VERSION=${params.VERSION} DESCRIPTION=${params.DESCRIPTION} node .deploy/upload.js'
       }
     }
   }
