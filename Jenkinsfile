@@ -37,7 +37,7 @@ pipeline {
       steps {
         script {
           sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` KEY_PATH=$KEYPATH node .deploy/preview.js'
-          currentBuild.description = "<img src='${JOB_URL}ws/preview-dev.png' height='200' width='200' />"
+          currentBuild.description = currentBuild.description = "<img src='${BUILD_URL}execution/node/3/ws/preview-dev.png' height='200' width='200' />"
         }
       }
     }
