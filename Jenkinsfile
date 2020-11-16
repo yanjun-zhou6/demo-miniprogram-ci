@@ -6,6 +6,10 @@ pipeline {
     }
   }
 
+  environment {
+    KEYPATH = credentials('mini-program-demo-deploy-key')
+  }
+
   stages {
     stage('prepare environment') {
       steps {
@@ -30,10 +34,6 @@ pipeline {
         branch 'dev'
       }
 
-      environment {
-        KEYPATH = credentials('mini-program-demo-deploy-key')
-      }
-
       steps {
         script {
           sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` KEY_PATH=$KEYPATH node .deploy/preview.js'
@@ -56,8 +56,7 @@ pipeline {
         }
       }
       steps {
-        echo VERSION
-        sh 'APP_ID=wx26472e7a2fdabe94 VERSION=$VERSION DESCRIPTION=$DESCRIPTION node .deploy/upload.js'
+        sh 'APP_ID=wx26472e7a2fdabe94 VERSION=$VERSION DESCRIPTION=$DESCRIPTION KEY_PATH=$KEYPATH node .deploy/upload.js'
       }
     }
   }
