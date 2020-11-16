@@ -30,9 +30,13 @@ pipeline {
         branch 'dev'
       }
 
+      environment {
+        KEYPATH = credentials('mini-program-demo-deploy-key')
+      }
+
       steps {
         script {
-          sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` node .deploy/preview.js'
+          sh 'APP_ID=wx26472e7a2fdabe94 PREVIEW_PATH=`pwd` KEY_PATH=$KEYPATH node .deploy/preview.js'
           currentBuild.description = "<img src='${JOB_URL}ws/preview-dev.png' height='200' width='200' />"
         }
       }

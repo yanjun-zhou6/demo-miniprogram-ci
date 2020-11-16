@@ -6,7 +6,7 @@ const path = require('path');
     appid: process.env.APP_ID,
     type: 'miniProgram',
     projectPath: path.join(__dirname, '..'),
-    privateKeyPath: path.join(__dirname, `./private.${process.env.APP_ID}.key`),
+    privateKeyPath: process.env.KEY_PATH
     ignores: ['node_modules/**/*'],
   });
   const previewResult = await ci.preview({
