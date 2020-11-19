@@ -6,6 +6,13 @@
   "author": "unnkoel <unnkoel@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
     "miniprogram-ci": "^1.0.83"
+  },
+  "scripts": {
+    "test": "jest --config jest.config.json --coverage --detectOpenHandles --forceExit --no-cache"
   }
 }

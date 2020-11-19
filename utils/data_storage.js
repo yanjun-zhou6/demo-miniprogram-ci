@@ -1,5 +1,5 @@
-let Polycal = require('polycal.js')
-let date_formater = require('date_formater.js')
+let Polycal = require('./polycal.js')
+let date_formater = require('./date_formater.js')
 
 module.exports.add = add
 module.exports.get = get

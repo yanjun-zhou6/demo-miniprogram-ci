@@ -1,6 +1,6 @@
-let Polycal = require('polycal.js')
-let storage = require('data_storage.js')
-let date_formater = require('date_formater.js')
+let Polycal = require('./polycal.js')
+let storage = require('./data_storage.js')
+let date_formater = require('./date_formater.js')
 
 module.exports.get_emojis = get_emojis
 module.exports.get_date = get_date
