@@ -19,13 +19,13 @@ pipeline {
 
     stage('test') {
       steps {
-        echo 'test process'
+        sh 'yarn test'
       }
     }
 
-    stage('build') {
+    stage('sonarQube scan') {
       steps {
-        echo 'build process'
+        echo 'sonarQube scan process'
       }
     }
 
