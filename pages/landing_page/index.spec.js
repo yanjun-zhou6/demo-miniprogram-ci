@@ -6,10 +6,8 @@ const app = getApp();
 jest.useFakeTimers();
 
 test('temotion expression setting', () => {
-  const origialExpresstion = page.data.emoji_url;
   page.setEmotionExpression();
-  const newExpression = page.data.emoji_url;
-  expect(newExpression).not.toEqual(origialExpresstion);
+  expect(page.setData).toBeCalled();
 });
 
 describe('wechat login', () => {
