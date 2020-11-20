@@ -1,8 +1,9 @@
 pipeline {
-  agent any
-
-  tools {
-    nodejs 'nodejs15'
+  agent {
+    docker {
+      image 'node:15.2.0-alpine3.10'
+      args  '--dns 10.72.0.3 --dns 10.22.16.254 -v /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner:/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner'
+    }
   }
 
   environment {
@@ -12,7 +13,6 @@ pipeline {
   stages {
     stage('prepare environment') {
       steps {
-        sh "npm install -g yarn"
         sh 'yarn install'
       }
     }
